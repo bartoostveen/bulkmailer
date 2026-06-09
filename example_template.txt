@@ -1,0 +1,3 @@
+Hello, {{.Recipient}}!
+
+Sample data: "{{.Data.Foo}}"

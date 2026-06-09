@@ -1,0 +1,16 @@
+[
+  {
+    "recipient": "johndoe@example.com",
+    "template": "example_template.txt",
+    "extraAttrs": {
+      "Foo": "bar"
+    }
+  },
+  {
+    "recipient": "anotheruser@example.com",
+    "template": "example_template.txt",
+    "extraAttrs": {
+      "Foo": "baz"
+    }
+  }
+]

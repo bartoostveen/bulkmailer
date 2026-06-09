@@ -1,0 +1,12 @@
+from: Bart Oostveen <bart@bartoostveen.nl>
+reply_to: Bart Oostveen <bart@bartoostveen.nl>
+subject: Reminder!
+target_dir: target
+smtp:
+  host: mx.bartoostveen.nl
+  port: 587
+  username: bart@bartoostveen.nl
+  password: verysecretpassword
+dry: true
+jobs_file: example_jobs.json
+unique_file_names: false
