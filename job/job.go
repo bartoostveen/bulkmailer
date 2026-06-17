@@ -33,8 +33,7 @@ func ProcessJob(cfg config.AppConfig, templates *template.Template, job EmailJob
 	if err := m.From(cfg.From); err != nil {
 		return err
 	}
-	if err := m.To("Bart Oostveen <bart@bartoostveen.nl>"); err != nil {
-		//if err := m.To(job.Recipient); err != nil {
+	if err := m.To(job.Recipient); err != nil {
 		return err
 	}
 	if cfg.ReplyTo != "" {
