@@ -22,7 +22,7 @@ func main() {
 	}
 
 	_ = os.Mkdir(cfg.TargetDir, 0755)
-	jobsFile, err := os.Open("jobs.json")
+	jobsFile, err := os.Open(cfg.JobsFile)
 	if err != nil {
 		log.Fatalln(err)
 	}

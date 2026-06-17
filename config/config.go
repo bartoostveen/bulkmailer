@@ -37,8 +37,6 @@ func assertNotBlank(str string, name string) {
 func (c *AppConfig) validate() {
 	if !c.Dry {
 		assertNotBlank(c.SMTP.Host, "SMTP.Host")
-		assertNotBlank(c.SMTP.Username, "SMTP.Username")
-		assertNotBlank(c.SMTP.Password, "SMTP.Password")
 	}
 
 	assertNotBlank(c.From, "From")
