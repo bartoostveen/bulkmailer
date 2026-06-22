@@ -96,7 +96,9 @@ func ProcessJob(cfg config.AppConfig, templates *template.Template, job EmailJob
 		if err == nil || try >= cfg.Retries {
 			return err
 		}
-		log.WithError(err).Warnf("Retrying sending email to %s, try %d/%d", job.Recipient, try, cfg.Retries)
+		delay := 250 * (1 << try)
+		log.WithError(err).Warnf("Retrying sending email to %s after %d (attempt %d/%d)", job.Recipient, delay, try, cfg.Retries)
+		time.Sleep(delay * time.Millisecond)
 	}
 	return nil // unreachable
 }
