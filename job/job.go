@@ -98,7 +98,8 @@ func ProcessAllJobs(cfg config.AppConfig, templates *template.Template, jobs []E
 	var wg sync.WaitGroup
 	ch := make(chan EmailJob)
 
-	for cpu := range runtime.NumCPU() {
+	jobCount := max(1, min(cfg.Paralellism, runtime.NumCPU()))
+	for cpu := range jobCount {
 		wg.Add(1)
 
 		go (func() {

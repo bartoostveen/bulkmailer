@@ -19,6 +19,7 @@ type AppConfig struct {
 	Dry             bool       `mapstructure:"dry"`
 	JobsFile        string     `mapstructure:"jobs_file"`
 	UniqueFileNames bool       `mapstructure:"unique_file_names"`
+	Paralellism     int        `mapstructure:"paralellism"`
 }
 
 type SMTPConfig struct {
@@ -58,6 +59,7 @@ func Load() (error, AppConfig) {
 	v.SetDefault("target_dir", "target")
 	v.SetDefault("jobs_file", "jobs.json")
 	v.SetDefault("unique_file_names", false)
+	v.SetDefault("paralellism", -1)
 
 	if *configPath != "" {
 		v.SetConfigFile(*configPath)
