@@ -24,7 +24,12 @@ type EmailJob struct {
 
 func ProcessJob(cfg config.AppConfig, templates *template.Template, job EmailJob) error {
 	var body bytes.Buffer
-	if err := templates.ExecuteTemplate(&body, "template.txt", job); err != nil {
+	templateName := job.Template
+	if strings.TrimSpace(templateName) == "" {
+		templateName = "template.txt"
+	}
+
+	if err := templates.ExecuteTemplate(&body, templateName, job); err != nil {
 		log.Tracef("Error rendering template, job was: %+v", job)
 		return err
 	}
