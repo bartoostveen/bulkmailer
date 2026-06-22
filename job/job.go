@@ -91,7 +91,14 @@ func ProcessJob(cfg config.AppConfig, templates *template.Template, job EmailJob
 		return err
 	}
 
-	return c.DialAndSend(m)
+	for try := range cfg.Retries + 1 {
+		err = c.DialAndSend(m)
+		if err == nil || try >= cfg.Retries {
+			return err
+		}
+		log.WithError(err).Warnf("Retrying sending email to %s, try %d/%d", job.Recipient, try, cfg.Retries)
+	}
+	return nil // unreachable
 }
 
 func ProcessAllJobs(cfg config.AppConfig, templates *template.Template, jobs []EmailJob) {
