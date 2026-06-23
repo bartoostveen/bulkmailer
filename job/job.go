@@ -18,6 +18,8 @@ import (
 
 type EmailJob struct {
 	Recipient string      `json:"recipient"`
+	Cc        []string    `json:"cc,omitempty"`
+	Bcc       []string    `json:"bcc,omitempty"`
 	Template  string      `json:"template"`
 	Data      interface{} `json:"extraAttrs"`
 }
@@ -38,9 +40,22 @@ func ProcessJob(cfg config.AppConfig, templates *template.Template, job EmailJob
 	if err := m.From(cfg.From); err != nil {
 		return err
 	}
+
 	if err := m.To(job.Recipient); err != nil {
 		return err
 	}
+
+	if len(job.Cc) != 0 {
+		if err := m.Cc(job.Cc...); err != nil {
+			return err
+		}
+	}
+	if len(job.Bcc) != 0 {
+		if err := m.Bcc(job.Bcc...); err != nil {
+			return err
+		}
+	}
+
 	if cfg.ReplyTo != "" {
 		if err := m.ReplyTo(cfg.ReplyTo); err != nil {
 			return err
