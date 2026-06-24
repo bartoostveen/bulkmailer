@@ -88,20 +88,19 @@ func ProcessJob(cfg config.AppConfig, templates *template.Template, job EmailJob
 	}
 
 	var c *mail.Client
-	if cfg.SMTP.Username == "" || cfg.SMTP.Password == "" {
-		c, err = mail.NewClient(
-			cfg.SMTP.Host,
-			mail.WithPort(cfg.SMTP.Port),
-		)
-	} else {
-		c, err = mail.NewClient(
-			cfg.SMTP.Host,
-			mail.WithPort(cfg.SMTP.Port),
+	opts := []mail.Option{mail.WithPort(cfg.SMTP.Port), mail.WithHELO(cfg.SMTP.Host)}
+	if cfg.SMTP.Username != "" && cfg.SMTP.Password != "" {
+		opts = append(opts,
 			mail.WithSMTPAuth(mail.SMTPAuthPlain),
 			mail.WithUsername(cfg.SMTP.Username),
 			mail.WithPassword(cfg.SMTP.Password),
 		)
 	}
+	c, err = mail.NewClient(
+		cfg.SMTP.Host,
+		opts...,
+	)
+
 	if err != nil {
 		return err
 	}
