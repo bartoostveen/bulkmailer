@@ -1,4 +1,4 @@
-module bartoostveen.nl/bulkmailer
+module go.bartoostveen.nl/bulkmailer
 
 go 1.26.2
 

@@ -5,9 +5,9 @@ import (
 	"io"
 	"os"
 
-	templates "bartoostveen.nl/bulkmailer"
-	"bartoostveen.nl/bulkmailer/config"
-	"bartoostveen.nl/bulkmailer/job"
+	templates "go.bartoostveen.nl/bulkmailer"
+	"go.bartoostveen.nl/bulkmailer/config"
+	"go.bartoostveen.nl/bulkmailer/job"
 	log "github.com/sirupsen/logrus"
 )
 

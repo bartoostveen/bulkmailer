@@ -11,7 +11,7 @@ import (
 	"text/template"
 	"time"
 
-	"bartoostveen.nl/bulkmailer/config"
+	"go.bartoostveen.nl/bulkmailer/config"
 	log "github.com/sirupsen/logrus"
 	"github.com/wneessen/go-mail"
 )
