@@ -11,9 +11,9 @@ import (
 	"text/template"
 	"time"
 
-	"go.bartoostveen.nl/bulkmailer/config"
 	log "github.com/sirupsen/logrus"
 	"github.com/wneessen/go-mail"
+	"go.bartoostveen.nl/bulkmailer/config"
 )
 
 type EmailJob struct {

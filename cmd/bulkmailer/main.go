@@ -5,10 +5,10 @@ import (
 	"io"
 	"os"
 
+	log "github.com/sirupsen/logrus"
 	templates "go.bartoostveen.nl/bulkmailer"
 	"go.bartoostveen.nl/bulkmailer/config"
 	"go.bartoostveen.nl/bulkmailer/job"
-	log "github.com/sirupsen/logrus"
 )
 
 func main() {
