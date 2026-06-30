@@ -104,6 +104,9 @@ func ProcessJob(cfg config.AppConfig, templates *template.Template, job EmailJob
 	if err != nil {
 		return err
 	}
+	defer func(c *mail.Client) {
+		_ = c.Close()
+	}(c)
 
 	for try := range cfg.Retries + 1 {
 		err = c.DialAndSend(m)
