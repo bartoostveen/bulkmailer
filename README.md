@@ -60,7 +60,7 @@ Sample data: "{{.Data.Foo}}"
 You may then invoke the main binary using:
 
 ```shell
-go run bartoostveen.nl/bulkmailer/cmd/bulkmailer
+go run go.bartoostveen.nl/bulkmailer/cmd/bulkmailer
 ```
 
 ## License
