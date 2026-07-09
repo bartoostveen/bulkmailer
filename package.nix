@@ -10,7 +10,7 @@ buildGoModule (finalAttrs: {
 
   src = ./.;
 
-  vendorHash = "sha256-XSICdVHaUUsKfKPyzHg6ygR0gR+IaYDOAHLhMJ13QW4=";
+  vendorHash = "sha256-xZQkxVV24quEW+kHjhMCoKJKIJwJYO0nVPUmIQfVKSY=";
 
   meta = {
     description = "A very primitive template renderer and sender, written in Go.";
